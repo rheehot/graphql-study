@@ -1,7 +1,7 @@
 import { ApolloServer } from "apollo-server-lambda";
 import { merge } from 'lodash';
 import mongoose from "mongoose";
-// import { typeDef as Common, resolver as commonResolver } from './graphql/common';
+import { typeDef as Common, resolver as commonResolver } from './graphql/common';
 import { typeDef as Dog , resolver as dogResolver } from './graphql/dog'
 
 const mem = () => {
@@ -10,11 +10,11 @@ const mem = () => {
 const schemaDirectives = {
 }
 const schema = [    
-	// Common, // typeDef (타입정의)
+	Common, // typeDef (타입정의)
 	Dog,
 ];
 const resolvs = merge({},
-	// commonResolver, //resolver
+	commonResolver, //resolver
 	dogResolver,
 );
 
@@ -43,7 +43,6 @@ const server = new ApolloServer({
 			// console.log(request);
 			const headers: any = request.http && request.http.headers;
 			if (headers) {
-				// console.log(headers['apollographql-client-name']);
 				return {
 					clientName: headers['apollographql-client-name'],
 					clientVersion: headers['apollographql-client-version'],
