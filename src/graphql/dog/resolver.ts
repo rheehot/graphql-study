@@ -1,4 +1,3 @@
-import { __TypeKind } from "graphql";
 import { Dog } from '../../models/mongo/dog';
 
 export const resolver = {

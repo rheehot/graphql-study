@@ -2,7 +2,8 @@ import { ApolloServer } from "apollo-server-lambda";
 import { merge } from 'lodash';
 import mongoose from "mongoose";
 import { typeDef as Common, resolver as commonResolver } from './graphql/common';
-import { typeDef as Dog , resolver as dogResolver } from './graphql/dog'
+import { typeDef as Dog , resolver as dogResolver } from './graphql/dog';
+import { typeDef as Friend, resolver as friendResolver} from './graphql/friend';
 
 const mem = () => {
 	return process.memoryUsage();
@@ -12,10 +13,12 @@ const schemaDirectives = {
 const schema = [    
 	Common, // typeDef (타입정의)
 	Dog,
+	Friend
 ];
 const resolvs = merge({},
 	commonResolver, //resolver
 	dogResolver,
+	friendResolver
 );
 
 try{
