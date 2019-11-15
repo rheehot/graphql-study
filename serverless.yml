@@ -1,0 +1,27 @@
+service:
+  name: test-api
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+custom:
+  serverless-offline:
+    port: 8010
+
+functions:
+  graphql:
+    handler: src/handler.graphql
+    events:
+      - http:
+          method: post
+          path: graphql
+          cors: true
+      - http:
+          method: get
+          path: graphql
+          cors: true

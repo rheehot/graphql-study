@@ -1,0 +1,43 @@
+{
+  "name": "graphql-server-test",
+  "version": "1.0.0",
+  "description": "graphql test",
+  "main": "index.js",
+  "scripts": {
+    "start": "sls offline start --useSeparateProcesses",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://straits9@github.com/o2palm/graphql-server-test.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/o2palm/graphql-server-test/issues"
+  },
+  "homepage": "https://github.com/o2palm/graphql-server-test#readme",
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.3.5",
+    "@types/mongoose": "^5.5.30",
+    "apollo-server-express": "^2.9.7",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.10",
+    "serverless-offline": "^5.12.0",
+    "serverless-webpack": "^5.3.1",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.9.7",
+    "apollo-server-lambda": "^2.9.7",
+    "graphql": "^14.5.8",
+    "graphql-tools": "^4.0.6",
+    "mongoose-lean-virtuals": "^0.5.0",
+    "serverless": "^1.57.0"
+  }
+}
