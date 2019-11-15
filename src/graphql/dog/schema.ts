@@ -7,7 +7,7 @@ type Dog {
 extend type Query {
 	dogs: [Dog!]!
 }
-extend type Mutaticon{
+extend type Mutation{
 	createDog(name: String!): Dog!
 	deleteDog(name: String!): Dog!
 	updateDog(name: String!, input: String!): Dog!
