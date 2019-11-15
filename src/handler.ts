@@ -1,8 +1,8 @@
 import { ApolloServer } from "apollo-server-lambda";
 import { merge } from 'lodash';
 import mongoose from "mongoose";
-import { typeDef as Common, resolver as commonResolver } from './graphql/common';
-// import { typeDef as Book , resolver as bookResolver } from './graphql/books'
+// import { typeDef as Common, resolver as commonResolver } from './graphql/common';
+import { typeDef as Dog , resolver as dogResolver } from './graphql/dog'
 
 const mem = () => {
 	return process.memoryUsage();
@@ -10,28 +10,13 @@ const mem = () => {
 const schemaDirectives = {
 }
 const schema = [    
-	Common, // typeDef (타입정의)
-	// Book,
+	// Common, // typeDef (타입정의)
+	Dog,
 ];
 const resolvs = merge({},
-	commonResolver, //resolver
-	// bookResolver,
+	// commonResolver, //resolver
+	dogResolver,
 );
-
-// Lambda의 경우 handler 밖에 정의한 variable은 lambda instance간에 유지가 된다.
-// (Any variable outside the handler function will be frozen in between Lambda invocations and possibly reused.)
-// Lambda를 사용할 경우 db.disconnect를 처리하면 안된다.
-
-const Logging = {
-	requestDidStart(requestContext: { request: any; }) {
-		const request = requestContext.request;
-
-		if (request.operationName !== 'IntrospectionQuery') {
-			console.log(request);
-			console.log(JSON.stringify(request.variables));
-		}
-	}
-}
 
 try{
 	mongoose.connect("mongodb://localhost:27017/test", {useNewUrlParser: true})
@@ -72,7 +57,6 @@ const server = new ApolloServer({
 		}
 	},
 	plugins: [
-		Logging
 	]
 });
 

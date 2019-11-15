@@ -1,2 +1,2 @@
 const mongoose = require('mongoose');
-export const Dog = mongoose.model("Dog", { name: String, input: String!})
+export const Dog: any = mongoose.model("Dog", { name: String, input: String!})
